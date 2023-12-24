@@ -23,13 +23,6 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/{apt,dpkg,cache,log} /tmp/* /var/tmp/*
 
 
-RUN pip3 install pip future lxml\
-    && pip install setuptools \
-    && pip3 install jinja2 \
-    && apt-get install python-tk \
-    && pip3 install grpcio-tools==1.48.2 grpcio==1.51.1 \
-    && python3 -m pip install -U matplotlib
-
 # Set environment variables
 ENV ROS_DISTRO humble
 ENV ROS_VERSION 2
