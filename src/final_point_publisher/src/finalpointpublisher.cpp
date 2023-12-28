@@ -22,21 +22,24 @@
 
 using namespace std::chrono_literals;
 
-/* This example creates a subclass of Node and uses std::bind() to register a
+/*! This example creates a subclass of Node and uses std::bind() to register a
  * member function as a callback from the timer. */
 
-class MinimalPublisher : public rclcpp::Node
+class Enes : public rclcpp::Node
 {
 public:
-  MinimalPublisher()
+  Enes()
   : Node("minimal_publisher"), count_(0)
   {
     publisher_ = this->create_publisher<std_msgs::msg::String>("topic", 10);
     timer_ = this->create_wall_timer(
-      500ms, std::bind(&MinimalPublisher::timer_callback, this));
+      500ms, std::bind(&Enes::timer_callback, this));
   }
 
 private:
+  /*!
+  * ... text ...
+  */
   void timer_callback()
   {
     auto message = std_msgs::msg::String();
@@ -49,10 +52,17 @@ private:
   size_t count_;
 };
 
+
+/**
+ * @brief Main function for the subscriber node.
+ * @param argc Number of command line arguments.
+ * @param argv Command line arguments.
+ * @return Exit code.
+ */
 int main(int argc, char * argv[])
 {
   rclcpp::init(argc, argv);
-  rclcpp::spin(std::make_shared<MinimalPublisher>());
+  rclcpp::spin(std::make_shared<Enes>());
   rclcpp::shutdown();
   return 0;
 }
