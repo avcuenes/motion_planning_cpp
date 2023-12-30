@@ -23,4 +23,13 @@ doxygen_viz:
 
 
 
+package_name ?= $(shell bash -c 'read -p "package name: " pwd; echo $$pwd')
+node_name ?= $(shell bash -c 'read -p "node name: " pwd; echo $$pwd')
+
+
+.PHONY : cretae_package 
+cretae_package: $(SOURCE)
+	@clear
+	cd src && ros2 pkg create --build-type ament_cmake --node-name  $(package_name) $(node_name)
+
 
