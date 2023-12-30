@@ -18,6 +18,9 @@ RUN apt-get update \
     python3-numpy \
     python3-pytest \
     python3-dev \
+    texlive-latex-base \
+    doxygen \
+    libgtest-dev \
     && apt-get -y autoremove \
     && apt-get clean autoclean \
     && rm -rf /var/lib/apt/lists/{apt,dpkg,cache,log} /tmp/* /var/tmp/*
