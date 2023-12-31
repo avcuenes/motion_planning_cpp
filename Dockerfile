@@ -22,6 +22,7 @@ RUN apt-get update \
     doxygen \
     libgtest-dev \
     make \
+    coreutils \
     && apt-get -y autoremove \
     && apt-get clean autoclean \
     && rm -rf /var/lib/apt/lists/{apt,dpkg,cache,log} /tmp/* /var/tmp/*
