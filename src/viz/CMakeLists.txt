@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(final_point_publisher)
+project(viz)
 
 # Default to C++14
 if(NOT CMAKE_CXX_STANDARD)
@@ -14,11 +14,11 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 
-add_executable(finalpoint src/finalpointpublisher.cpp)
-ament_target_dependencies(finalpoint rclcpp std_msgs)
+add_executable(viztool src/viz.cpp)
+ament_target_dependencies(viztool rclcpp std_msgs)
 
 install(TARGETS
-  finalpoint
+  viztool
   DESTINATION lib/${PROJECT_NAME})
 
 ament_package()
