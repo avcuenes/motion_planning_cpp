@@ -21,7 +21,7 @@ class HomePoint : public rclcpp::Node
 {
   public:
     HomePoint()
-    : Node("TargetPoint"), count_(0)
+    : Node("HomePoint"), count_(0)
     { 
 
       homepointpub_ = this->create_publisher<geometry_msgs::msg::Point>("homepoint", 10);  /*!< İnitilaze topic */
