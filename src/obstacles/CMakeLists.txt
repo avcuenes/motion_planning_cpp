@@ -13,9 +13,10 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(geometry_msgs REQUIRED)
 
 add_executable(obstaclespoints src/obstaclepoints.cpp)
-ament_target_dependencies(obstaclespoints rclcpp std_msgs)
+ament_target_dependencies(obstaclespoints rclcpp std_msgs geometry_msgs)
 
 install(TARGETS
   obstaclespoints
