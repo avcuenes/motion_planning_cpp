@@ -9,7 +9,8 @@ docker_build:
 
 .PHONY : docker_run
 docker_run:
-	docker run -it mpcpp 
+	docker run -it --entrypoint /bin/bash mpcpp
+
 
 
 .PHONY : doxygen_create

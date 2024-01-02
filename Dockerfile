@@ -50,7 +50,6 @@ RUN echo "backend : Agg" > /root/.config/matplotlib/matplotlibrc
 # Expose the default ROS 2 communication ports
 EXPOSE 11311
 
-
-
+ENTRYPOINT ["/bin/sh","/ros2_workspace/tools/sourceproject.sh"]
 # Run a default command, e.g., starting a bash shell
 CMD ["bash"]
