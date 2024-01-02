@@ -33,6 +33,8 @@ struct Obstacle {
 };
 
 
+
+
 /**
  * @brief A class Obstacle Point Point.
  *
@@ -46,12 +48,28 @@ class MPNODE : public rclcpp::Node
 
   private:
     std::vector<Obstacle*>  Obtacles;
-    //! Timer callback function 
+    //! Obstacle callback function 
     void obstacle_callback(const geometry_msgs::msg::Point::SharedPtr msg);
+    //! Homepoint callback function
+    void homepoint_callback(const geometry_msgs::msg::Point::SharedPtr msg);
+    //! Fİnalpoint callback function
+    void finalpoint_callback(const geometry_msgs::msg::Point::SharedPtr msg);
+
+    /**
+     * @brief This struct define homepoint location
+    */
+    struct {
+        double x, y,z;
+    }HomePoint,FinalPoint;
+
+
     //! Create timer with ros2
     rclcpp::TimerBase::SharedPtr timer_;
     // Define subscriptions types
     rclcpp::Subscription<geometry_msgs::msg::Point>::SharedPtr obstaclepoints_; 
+    rclcpp::Subscription<geometry_msgs::msg::Point>::SharedPtr homepoint_; 
+    rclcpp::Subscription<geometry_msgs::msg::Point>::SharedPtr finalpoint_; 
+    
     size_t count_;
 };
 

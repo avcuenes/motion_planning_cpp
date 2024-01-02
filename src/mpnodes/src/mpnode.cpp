@@ -17,7 +17,41 @@ MPNODE::MPNODE()
    // Define topics for subscribers
     obstaclepoints_ = this->create_subscription<geometry_msgs::msg::Point>(
       "topic", 10, std::bind(&MPNODE::obstacle_callback, this, _1));
+    homepoint_ = this->create_subscription<geometry_msgs::msg::Point>(
+      "topic", 10, std::bind(&MPNODE::homepoint_callback, this, _1));
+    finalpoint_ = this->create_subscription<geometry_msgs::msg::Point>(
+      "finalpoint", 10, std::bind(&MPNODE::finalpoint_callback, this, _1));
+    
+    
 }
+
+// finalpoint callback function
+void MPNODE::homepoint_callback(const geometry_msgs::msg::Point::SharedPtr msg)
+{ 
+
+  HomePoint.x = static_cast<double>(msg->x);
+  HomePoint.y = static_cast<double>(msg->y);
+  HomePoint.z = static_cast<double>(msg->z);
+  
+  RCLCPP_INFO(get_logger(), "obstacle point: [%.2f, %.2f, %.2f]",
+    HomePoint.x, HomePoint.y,HomePoint.z );
+
+}
+
+
+// obstacle callback function
+void MPNODE::finalpoint_callback(const geometry_msgs::msg::Point::SharedPtr msg)
+{ 
+
+  FinalPoint.x = static_cast<double>(msg->x);
+  FinalPoint.y = static_cast<double>(msg->y);
+  FinalPoint.z = static_cast<double>(msg->z);
+  
+  RCLCPP_INFO(get_logger(), "obstacle point: [%.2f, %.2f, %.2f]",
+    FinalPoint.x, FinalPoint.y,FinalPoint.z );
+}
+
+
 
 
 // obstacle callback function
