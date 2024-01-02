@@ -21,7 +21,7 @@ using namespace std::chrono_literals;
 enum obstacletype {
       square = 0,
       circle
-    }
+    };
 
 /**
  * @brief This struct define obstacles
@@ -47,7 +47,7 @@ class MPNODE : public rclcpp::Node
   private:
     std::vector<Obstacle*>  Obtacles;
     //! Timer callback function 
-    void timer_callback();
+    void obstacle_callback(const geometry_msgs::msg::Point::SharedPtr msg);
     //! Create timer with ros2
     rclcpp::TimerBase::SharedPtr timer_;
     // Define subscriptions types
