@@ -1,0 +1,21 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+     branches:
+      - '*'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: ros-tooling/setup-ros@v0.7
+        with:
+          required-ros-distributions: melodic
+      - uses: ros-tooling/action-ros-ci@v0.3
+        with:
+          package-name: motion_planning_cpp
+          target-ros1-distro: noetic
